@@ -19,8 +19,8 @@ const storySchema = new Schema({
     required: true
   },
   story_url: {
-    type:String,
-    required:true
+    type: String,
+    default: '#'
   },
   created_at: {
   type: Date,
@@ -32,7 +32,6 @@ const storySchema = new Schema({
     default: false
   }
 })
-
 
 const Story = mongoose.model('Story', storySchema)
 export default Story
