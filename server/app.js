@@ -16,6 +16,7 @@ app.set('view engine', 'jade')
 app.use(bodyParser.json())
 app.use('/', routes)
 app.use('/api', apiRoutes)
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
   var err = new Error('Not Found')

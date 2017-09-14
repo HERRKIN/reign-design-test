@@ -1,0 +1,32 @@
+span {
+  color: #999;
+  padding: 10px;
+}
+span::before, span::after {
+  content: ' - ';
+}
+
+tr > th > a {
+  float: right;
+  cursor: pointer;
+  display: none;
+}
+tr:hover >  th > a {
+  display: block;
+}
+tr:hover {
+  background: #fafafa;
+  cursor: pointer;
+}
+tr{
+  color:#333;
+  background: #fff;
+}
+th {
+  border-top: none !important;
+  border-bottom: 1px solid #ccc;
+}
+.jumbotron{
+  background-color: black !important;
+  color:white;
+}

@@ -1,7 +1,9 @@
+import {Story} from '../models'
 const storyController = {};
-
 storyController.getAll = (req, res, next) => {
-
-  res.render('index', {title: 'HN feed'})
+  Story.find({}).then(stories => {
+    console.log(stories)
+    res.render('index', {title: 'HN feed', stories: stories})
+  })
 }
 export default storyController

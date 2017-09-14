@@ -1,3 +1,11 @@
 extends layout
 
 block content
+  table.table
+    tbody
+      each story in stories
+        tr.clickable(data-href=story.story_url)
+          th(scope='row')=story.title+'.'
+            span= story.author
+            a
+              i.fa.fa-trash

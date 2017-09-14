@@ -1,17 +1,7 @@
 import app from './app'
-import request from 'request-promise-native'
 import mongoose from 'mongoose'
 mongoose.Promise = Promise
 import DataFetch from './dataFetch'
-
-// I thought of using this but I thought it was better to make sure the app
-// fetches the data every hour after it was launched, not every hour on the clock
-
-// import {CronJob} from 'cron'
-//
-// new CronJob('* * * * * *', () => {
-//   console.log('You will see this message every second')
-// }, null, true, 'America/Santiago')
 
 mongoose.connect('mongodb://localhost:27017/reigndesign', {
   useMongoClient: true

@@ -2,6 +2,10 @@ import app from './app'
 import request from 'request-promise-native'
 import { Story } from './models'
 
+// I thought of using this but I thought it was better to make sure the app
+// fetches the data every hour after the time it was launched, not every
+// clock hour
+
 // import {CronJob} from 'cron'
 //
 // new CronJob('* * * * * *', () => {
