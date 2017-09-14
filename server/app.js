@@ -3,8 +3,10 @@ import bodyParser from 'body-parser'
 import path from 'path'
 import apiRoutes from './api-routes'
 import routes from './routes'
+import moment from 'moment'
 
 const app = express()
+app.locals.moment = moment
 
 // view engine
 const viewPath = path.join(__dirname, 'views')

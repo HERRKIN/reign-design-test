@@ -13,6 +13,7 @@ tr > th > a {
 }
 tr:hover >  th > a {
   display: block;
+  color: #333;
 }
 tr:hover {
   background: #fafafa;
@@ -25,6 +26,9 @@ tr{
 th {
   border-top: none !important;
   border-bottom: 1px solid #ccc;
+}
+tr > th:first-child{
+  width: 80%
 }
 .jumbotron{
   background-color: black !important;

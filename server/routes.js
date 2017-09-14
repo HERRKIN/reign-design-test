@@ -8,4 +8,5 @@ const router = Router()
 // Basic Routes
 
 router.get('/', storyController.getAll)
+router.get('/delete/:id', storyController.delete)
 export default router

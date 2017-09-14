@@ -21,22 +21,22 @@ class dataFetch {
   }
 
   fetchData () {
-    // console.log(this,'fetchData')
     return request({uri: 'https://hn.algolia.com/api/v1/search_by_date?query=nodejs', json: true})
   }
 
   findDeleted () {
     return Story.find({isDeleted: true})
     .then(deletedStories => {
-      const deleted = deletedStories.map(item => item.story_id)
-      this.deletedStories = deleted
+      const deleted = deletedStories.map(item => {
+        //grab the items that are not already in the array
+        return !this.deletedStories.includes(item.story_id) && item.story_id
+      })
+      this.deletedStories = [...this.deletedStories, ...deleted]
       return Promise.resolve(deleted)
     })
   }
 
   saveData (data) {
-    // console.log(res.hits[0])
-    // console.log(this,'saveData')
     const {hits} = data
     // store deleted stories that are present in current fetch
     let deleted = []
@@ -55,7 +55,7 @@ class dataFetch {
         deleted.push(story_id)
         return Promise.resolve()
       }
-
+      // create new story record
       const story = new Story({
         story_id,
         title: title || story_title,
@@ -63,7 +63,7 @@ class dataFetch {
         author,
         story_url: story_url || url
       })
-
+      // save the new story record
       return story.save()
     })
 
@@ -73,12 +73,10 @@ class dataFetch {
       this.deletedStories = deleted
       return Story.find({})
     })
-    .then((res) => console.log(res.length+' saved'))
+    .then((res) => console.log(res.length + ' saved'))
   }
 
   fetchAndSave () {
-    // console.log(this,'fetchAndSave')
-    // console.log(this.deletedStories)
     return this.findDeleted()
     .then(() => {
       return Story.remove({})
@@ -88,12 +86,8 @@ class dataFetch {
     })
     .then((res) => {
       return this.saveData(res)
-    },console.error)
+    }, console.error)
   }
-
-  // .then(() => {
-  //   .then(res => {
-
-  // })
 }
-export default dataFetch;
+
+export default dataFetch

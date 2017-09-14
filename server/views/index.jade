@@ -7,5 +7,6 @@ block content
         tr.clickable(data-href=story.story_url)
           th(scope='row')=story.title+'.'
             span= story.author
-            a
+          th(scope='row')=moment(story.created_at).fromNow()
+            a(href='/delete/'+story.story_id)
               i.fa.fa-trash
