@@ -1,7 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
-import apiRoutes from './api-routes'
 import routes from './routes'
 import moment from 'moment'
 
@@ -17,8 +16,8 @@ app.set('view engine', 'jade')
 // Middleware
 app.use(bodyParser.json())
 app.use('/', routes)
-app.use('/api', apiRoutes)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')))
+
 
 app.use((req, res, next) => {
   var err = new Error('Not Found')
